@@ -13,7 +13,7 @@ export default class LogOutBar extends React.Component {
           <Text style={styles.buttonText}>Keypad</Text>
         </TouchableOpacity>
         <View style={styles.button}>
-          <Text style={styles.buttonText}>Jack</Text>
+          <Text style={styles.buttonText}>John</Text>
           <FontAwesome name={'circle'} size={10} color={'white'} />
         </View>
       </View>

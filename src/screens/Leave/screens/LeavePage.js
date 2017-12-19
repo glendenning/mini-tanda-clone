@@ -11,6 +11,7 @@ export default class LeavePage extends React.Component {
       <View style={styles.container}>
         <Heading />
         <LogOutBar />
+        <Text>Leave Page</Text>
       </View>
     )
   }

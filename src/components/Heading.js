@@ -8,12 +8,28 @@ export default class Heading extends React.Component {
     super(props);
     this.state = {
       digitalTime: '',
+      calendarDay: '',
     }
-    this.digitalTime = this.digitalTime.bind(this);
+    this.time = this.time.bind(this);
   }
 
-  digitalTime(){
-    // const date = Date.now();
+  ordinalize(i) {
+    var j = i % 10,
+        k = i % 100;
+    if (j == 1 && k != 11) {
+        return i + "st";
+    }
+    if (j == 2 && k != 12) {
+        return i + "nd";
+    }
+    if (j == 3 && k != 13) {
+        return i + "rd";
+    }
+    return i + "th";
+}
+
+  time(){
+    // Digital Time
     const date = new Date();
     var hours = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
     const minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
@@ -25,13 +41,24 @@ export default class Heading extends React.Component {
     const timeHM = hours + ":" + minutes + ' ' + meridiem;
     const timeHMS = hours + ":" + minutes + ":" + seconds + ' ' + meridiem;
 
-    console.log('time ', timeHMS);
-    this.setState({digitalTime: timeHM});
+    // calendarDay
+    const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    const day = days[date.getDay()]
+    const month = months[date.getMonth()]
+    const dateNumber = this.ordinalize(date.getDate());
+    const timeCalendar = day + ' ' + dateNumber + ' ' + month;
+
+    // Update state
+    this.setState({
+      digitalTime: timeHM,
+      calendarDay: timeCalendar
+    });
   }
 
   componentWillMount(){
-    this.interval = setInterval(this.digitalTime, 1000);
-    this.digitalTime();
+    this.interval = setInterval(this.time, 1000);
+    this.time();
   }
 
   componentWillUnmount() {
@@ -52,7 +79,7 @@ export default class Heading extends React.Component {
               <SimpleLineIcons name={'location-pin'} color={'white'} size={14}/>
               Gardens Point Campus
             </Text>
-            <Text style={styles.smallText}>Friday 14th Jul</Text>
+            <Text style={styles.smallText}>{this.state.calendarDay}</Text>
           </View>
         </View>
 
