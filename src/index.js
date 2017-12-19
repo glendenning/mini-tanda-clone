@@ -18,8 +18,8 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import Octicons from 'react-native-vector-icons/Octicons';
 
-
 // Screens
+import Login from './screens/Login';
 import TimeClock from './screens/TimeClock';
 import Leave from './screens/Leave';
 import Settings from './screens/Settings';
@@ -42,6 +42,9 @@ class App extends React.Component {
     return(
       <Router>
       <Scene key="root">
+
+        <Scene key="login" title="Login" component={Login} initial hideNavBar/>
+
         <Scene key="tabbar" tabs hideNavBar lazy
           inactiveBackgroundColor={'rgb(53,59,69)'}
           activeBackgroundColor={'rgb(53,59,69)'}
