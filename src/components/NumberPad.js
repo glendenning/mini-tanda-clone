@@ -27,7 +27,7 @@ export default class NumberPad extends React.Component {
   isPasscodeNull(passcode){
     var isNull = true;
     for (var i = 0; i < passcode.length; i++) {
-      if (passcode[i]){
+      if (passcode[i] || passcode[i] == 0){
         isNull = false;
       }
     }
@@ -39,12 +39,15 @@ export default class NumberPad extends React.Component {
     var newIndex;
     // find the lowest index that is null
     for (var i = 0; i < passcode.length; i++) {
-      if (!passcode[i]){
+      if (!passcode[i] && passcode[i] != 0){
         newIndex = i;
         break;
       }
     }
+    console.log('new index ', newIndex);
+    console.log('pressed number ', pressedNumber);
     passcode[newIndex] = pressedNumber;
+    console.log('passcode', passcode);
     this.setState({passcode})
     if (newIndex + 1 == passcode.length){
       setTimeout(function(){
@@ -59,7 +62,7 @@ export default class NumberPad extends React.Component {
     var newIndex = 0;
     // find the highest index that isn't null
     for (var i = 0; i < passcode.length; i++){
-      if (passcode[i]){
+      if (passcode[i] || passcode[i] == 0){
         newIndex = i;
       }
     }
@@ -92,7 +95,7 @@ export default class NumberPad extends React.Component {
             <Row>
               {this.state.passcode.map((number, i) => (
                   <Col key={i}>
-                    {number ?
+                    {(number || number == 0) ?
                       <View style={styles.passcodeDigitContainer}>
                         <Text style={styles.passcodeDigitText}>{number}</Text>
                       </View>
