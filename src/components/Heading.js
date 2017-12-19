@@ -38,6 +38,9 @@ export default class Heading extends React.Component {
     if (hours > 12){
       hours -= 12;
     }
+    if (hours == '00'){
+      hours = '12'
+    }
     const timeHM = hours + ":" + minutes + ' ' + meridiem;
     const timeHMS = hours + ":" + minutes + ":" + seconds + ' ' + meridiem;
 
