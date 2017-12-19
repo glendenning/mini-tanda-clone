@@ -14,10 +14,12 @@ It's recommended to open it with ExpoXDE [download here](https://docs.expo.io/ve
 
 ![screen shot 2017-12-19 at 11 53 55 pm](https://user-images.githubusercontent.com/20857366/34160256-e7f85c8c-e517-11e7-9a34-163e4a0b7e1f.png)
 
-Make sure it's LAN
+Make sure it's LAN  
+
 ![lan](https://user-images.githubusercontent.com/20857366/34183047-7ee6d19a-e564-11e7-9b64-c46623ccf8d7.png)
 
-Open the simulator
+Open the simulator  
+
 ![simulator](https://user-images.githubusercontent.com/20857366/34183095-cb4cc576-e564-11e7-9f95-26b3e9cc8f4c.png)
 
 
